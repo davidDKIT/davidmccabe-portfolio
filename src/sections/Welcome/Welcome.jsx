@@ -1,12 +1,26 @@
 import React from "react";
 import styles from "./WelcomeStyles.module.css";
 import selfiepic from "../../assets/selfie.jpg";
-import themeIcon from "../../assets/sun.svg";
-import linkedInIcon from "../../assets/linkedin-light.svg";
-import GithubIcon from "../../assets/github-light.svg";
-import cv from "../../assets/davidmccabe_cv_12_07_2024.pdf"
+import sun from "../../assets/sun.svg";
+import moon from "../../assets/moon.svg";
+import linkedInLight from "../../assets/linkedin-light.svg";
+import linkedInDark from "../../assets/linkedin-dark.svg";
+
+import GithubLight from "../../assets/github-light.svg";
+import GithubDark from "../../assets/github-dark.svg";
+
+import cv from "../../assets/davidmccabe_cv_12_07_2024.pdf";
+import { useTheme } from "../../common/ThemeContext";
 
 function Welcome() {
+  const { theme, toggleTheme } = useTheme();
+
+  const themeIcon = theme === 'light' ? sun : moon;
+
+  const linkedInIcon = theme === 'light' ? linkedInLight : linkedInDark;
+
+  const GithubIcon = theme === 'light' ? GithubLight : GithubDark;
+
   return (
     <section id="welcome" className={styles.container}>
       <div className={styles.colorModeContainer}>
@@ -19,6 +33,7 @@ function Welcome() {
           className={styles.colorMode}
           src={themeIcon}
           alt="color mode icon"
+          onClick={toggleTheme}
         />
       </div>
       <div className={styles.info}>
@@ -44,7 +59,7 @@ function Welcome() {
           and to broaden my area of knowledge.
         </p>
         <a href={cv} download>
-          <button className="hover"></button>
+          <button className="hover">Download CV</button>
         </a>
       </div>
     </section>
