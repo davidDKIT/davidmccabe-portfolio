@@ -35,6 +35,7 @@ function Welcome() {
           alt="color mode icon"
           onClick={toggleTheme}
         />
+        
       </div>
       <div className={styles.info}>
         <h1>
@@ -52,7 +53,7 @@ function Welcome() {
             <img src={GithubIcon} alt="Github Icon" />
           </a>
         </span>
-        <p>
+        <p className={styles.description}>
           Graduate BSc. Computing in Software Development student with hands-on
           experience in programming and development in professional
           environments. Keen on starting a profession after receiving my degree
